@@ -1,0 +1,10 @@
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-89cd32176a1296c6c97318863de09e64a68a7386.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\classes-6f2b9be9491c003cc1cb978c2b1d16cdb0a793ac.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\classes-c6cadf7515009c170a06850f491a7651625b720c.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-6ea813b6e187f85ec937896ba5c76ade9b4ef4fc.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-d4467ccb2505e6add5ed3d2d666ecb5f1d0a4c5f.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\otto-1.3.5-d78966013141ab92a8fa9c31f56d77444baef569.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\Parse-1.8.0-62580cddf41bc31cc015cb1b21bf32a09300d102.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.8.0-dd54c66217ecfc2e8b104bcfe24473731ebb5415.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-3fa97d6e0aeec0df70fbd3e2a27ee7f87e6f9061.jar
+C:\Users\Anton\Documents\GitHub\trpo\Messenger\app\build\intermediates\classes\debug
