@@ -23,8 +23,8 @@ public class ContactsFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
     private static ContactAdapter contactsAdapter = null;
-    private static final ArrayList<Contact> contacts = new ArrayList<Contact>();
-    private static final ArrayList<String> contactsText = new ArrayList<String>();
+    private static final ArrayList<Contact> contacts = new ArrayList<>();
+    private static final ArrayList<String> contactsText = new ArrayList<>();
 
     public static ContactAdapter getContactsAdapter() {
         return contactsAdapter;

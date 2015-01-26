@@ -31,20 +31,20 @@ public class ServerController extends Application{
         bus = new Bus();
         Parse.initialize(getApplicationContext(), "", "");
 
-        ParsePush.subscribeInBackground("", new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    Log.d("asd", "successfully subscribed to the broadcast channel.");
-                } else {
-                    Log.e("asd", "failed to subscribe for push", e);
-                }
-            }
-        });
-
         accountManagerController.readFromSharedPreferences(context);
 
         if (currentUser != null) {
+            ParsePush.subscribeInBackground(currentUser.getName().replace("@", ".").replace(".", ""), new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Log.d("asd", "successfully subscribed to the broadcast channel.");
+                    } else {
+                        Log.e("asd", "failed to subscribe for push", e);
+                    }
+                }
+            });
+
             startMainActivity();
         }
     }
@@ -99,8 +99,8 @@ public class ServerController extends Application{
 
     public static void getMessages(final Contact withUser) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Message");
-        query.whereContainedIn("to", new ArrayList<String>(Arrays.asList(new String[]{withUser.getId(), currentUser.getId()})));
-        query.whereContainedIn("from", new ArrayList<String>(Arrays.asList(new String[] { withUser.getId(), currentUser.getId() })));
+        query.whereContainedIn("to", new ArrayList<>(Arrays.asList(new String[]{withUser.getId(), currentUser.getId()})));
+        query.whereContainedIn("from", new ArrayList<>(Arrays.asList(new String[] { withUser.getId(), currentUser.getId() })));
         query.orderByAscending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {

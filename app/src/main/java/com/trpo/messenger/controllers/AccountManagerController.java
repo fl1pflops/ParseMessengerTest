@@ -3,6 +3,8 @@ package com.trpo.messenger.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.trpo.messenger.models.Account;
 import com.trpo.messenger.models.User;
 import com.trpo.messenger.views.LoginActivity;
@@ -17,11 +19,11 @@ public class AccountManagerController {
             editor.putString("name", ServerController.getCurrentUser().getName());
             editor.putString("email", ServerController.getCurrentUser().getEmail());
             editor.putString("id", ServerController.getCurrentUser().getId());
-            editor.commit();
+            editor.apply();
         }
     }
 
-    public void readFromSharedPreferences(Context context) {
+    public static void readFromSharedPreferences(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences("Account", Context.MODE_PRIVATE);
 
         String name = sharedPref.getString("name", null);
@@ -29,6 +31,7 @@ public class AccountManagerController {
         String email = sharedPref.getString("email", null);
 
         if (name != null && id != null && email != null) {
+            Log.d("asd", name + " " + email + " " + id);
             ServerController.setCurrentUser(new Account(name, email));
             ServerController.getCurrentUser().setId(id);
         }

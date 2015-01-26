@@ -47,12 +47,14 @@
                 <category android:name="com.trpo.messenger" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.ParsePushBroadcastReceiver" android:exported="false">
+        <receiver android:name=".controllers.PushReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
                 <action android:name="com.parse.push.intent.OPEN" />
+                <action android:name="com.trpo.messenger.RECEIVE_PUSH" />
             </intent-filter>
         </receiver>
+
     </application>
 </manifest>

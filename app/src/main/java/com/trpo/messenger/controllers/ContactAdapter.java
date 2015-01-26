@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ContactAdapter extends ArrayAdapter<Contact> {
-
-    //HashMap<Message, Integer> mIdMap = new HashMap<Message, Integer>();
-    List<Contact> contacts = new ArrayList<Contact>();
+    List<Contact> contacts = new ArrayList<>();
     public static final int DIRECTION_INCOMING = 0;
     public static final int DIRECTION_OUTGOING = 1;
     private LayoutInflater layoutInflater;
@@ -39,5 +37,13 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         ((TextView) convertView.findViewById(R.id.text)).setText(contact.getName());
 
         return convertView;
+    }
+
+    public Contact getContactByName(String name) {
+        for (Contact contact : contacts) {
+            if (name.equals(contact.getName())) return contact;
+        }
+
+        return null;
     }
 }

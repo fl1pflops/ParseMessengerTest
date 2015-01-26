@@ -11,12 +11,20 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.parse.ParseException;
+import com.parse.ParsePush;
+import com.parse.SendCallback;
 import com.squareup.otto.Subscribe;
 import com.trpo.messenger.R;
 import com.trpo.messenger.controllers.MessageAdapter;
 import com.trpo.messenger.controllers.ServerController;
 import com.trpo.messenger.models.Contact;
 import com.trpo.messenger.models.Message;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -69,6 +77,25 @@ public class ConversationFragment extends Fragment {
                             new Message(ServerController.getUser().getId(), currentUserConversation.getId(), message.getText().toString())
                     );
 
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("from", ServerController.getUser().getName());
+                        object.put("message", message.getText().toString());
+                        //object.put("actionyAction", "actionyAction");
+
+                        ParsePush pushMessageClient1 = new ParsePush();
+                        pushMessageClient1.setData(object);
+                        pushMessageClient1.setChannel(currentUserConversation.getName().replace("@",".").replace(".",""));
+                        pushMessageClient1.sendInBackground(new SendCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e != null) Toast.makeText(getActivity(), "Something goes wrong", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     message.setText("");
                     ServerController.getMessages(currentUserConversation);
                 }
@@ -83,20 +110,6 @@ public class ConversationFragment extends Fragment {
         if (currentUserConversation != null) {
             ServerController.getMessages(currentUserConversation);
         }
-
-        /*final Handler h = new Handler();
-        h.postDelayed(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                if (currentUserConversation != null) {
-                    ServerController.getMessages(currentUserConversation);
-                }
-
-                h.postDelayed(this, 3000);
-            }
-        }, 100); // 1 second delay (takes millis)*/
 
         return rootView;
     }
@@ -119,6 +132,6 @@ public class ConversationFragment extends Fragment {
 
     public static void clearMessages() {
         messages.clear();
-        messagesAdapter.notifyDataSetChanged();
+        if (messagesAdapter != null) messagesAdapter.notifyDataSetChanged();
     }
 }
